@@ -102,59 +102,16 @@ publishing {
     }
 	repositories {
         maven {
-            url = project.property('mavenCentralSnapshotUrl')
+            url = 'https://scm.devfactory.com/nexus/content/repositories/df-thirdparty'
             
             credentials {
-    			if (project.rootProject.file('local.properties').exists()) {
+        			username = 'DF username'
 
-        			Properties properties = new Properties()
-
-        			properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-        			username = properties.getProperty('sonatypeUsername')
-
-        			password = properties.getProperty('sonatypePassword')
-
-    			}
+        			password = 'DF password'
             }
         }
-        
-        maven {
-            url = project.property('mavenCentralReleaseUrl')
-            
-            credentials {
-    			if (project.rootProject.file('local.properties').exists()) {
-
-        			Properties properties = new Properties()
-
-        			properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-        			username = properties.getProperty('sonatypeUsername')
-
-        			password = properties.getProperty('sonatypePassword')
-
-    			}
-            }
-        }
-        
-        maven {
-            url = project.property('mavenBintraySnapshotUrl')
-            
-            credentials {
-    			if (project.rootProject.file('local.properties').exists()) {
-
-        			Properties properties = new Properties()
-
-        			properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-        			username = (properties.containsKey('bintray.user')) ? properties.getProperty('bintray.user').toLowerCase() : "BINTRAY_USERNAME"
-
-        			password = properties.getProperty('bintray.apikey')
-
-    			}
-            }
-		}
     }
+
 
 }
 
